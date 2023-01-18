@@ -4,7 +4,6 @@ using Jsonize.Abstractions.Configuration;
 using Jsonize.Benchmarks.Constants;
 using Jsonize.Parser;
 using Jsonize.Serializer;
-using JwfJsonize = JackWFinlay.Jsonize.Jsonize;
 
 namespace Jsonize.Benchmarks.Benchmarks;
 
@@ -29,13 +28,6 @@ public class JsonizeBenchmarks
         _docoHtmlStream = new MemoryStream(Encoding.UTF8.GetBytes(StringResources.DocoHtmlExample));
         _largeExampleStream = new MemoryStream(Encoding.UTF8.GetBytes(StringResources.LargeExample));
     }
-
-    [Benchmark]
-    public void JwfJsonizeHtmlBodyP()
-    {
-        var jsonize = new JwfJsonize(StringResources.HtmlBodyP);
-        jsonize.ParseHtmlAsJsonString();
-    }
     
     [Benchmark]
     public async Task JsonizerHtmlBodyP()
@@ -51,13 +43,6 @@ public class JsonizeBenchmarks
     }
     
     [Benchmark]
-    public void JwfJsonizeDocoHtmlExample()
-    {
-        var jsonize = new JwfJsonize(StringResources.DocoHtmlExample);
-        jsonize.ParseHtmlAsJsonString();
-    }
-    
-    [Benchmark]
     public async Task JsonizerDocoHtmlExample()
     {
         await _jsonizer.ParseToStringAsync(StringResources.DocoHtmlExample);
@@ -68,13 +53,6 @@ public class JsonizeBenchmarks
     {
         await _jsonizer.ParseToStringAsync(_docoHtmlStream);
         _docoHtmlStream.Position = 0;
-    }
-    
-    [Benchmark]
-    public void JwfJsonizeLargeExample()
-    {
-        var jsonize = new JwfJsonize(StringResources.LargeExample);
-        jsonize.ParseHtmlAsJsonString();
     }
     
     [Benchmark]

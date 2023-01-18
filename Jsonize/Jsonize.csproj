@@ -6,7 +6,7 @@
         <IsPackable>True</IsPackable>
         <Description>Convert HTML to JSON</Description>
         <PackageReleaseNotes>Fixes a major performance regression from migration to new parsing engine in 3.0.0. Adds methods for consuming HTML from a stream.</PackageReleaseNotes>
-        <TargetFrameworks>netstandard2.0;net5.0;net6.0</TargetFrameworks>
+        <TargetFrameworks>netstandard2.0;net6.0;net7.0</TargetFrameworks>
         <Version>3.1.1</Version>
         <AssemblyVersion>3.1.1</AssemblyVersion>
         <FileVersion>3.1.1</FileVersion>

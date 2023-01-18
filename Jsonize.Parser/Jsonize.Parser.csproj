@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <PackageId>Jsonize.Parser</PackageId>
@@ -6,7 +6,7 @@
         <IsPackable>True</IsPackable>
         <Description>Parser engine for the package Jsonize</Description>
         <PackageReleaseNotes>Fixes a major performance regression from migration to new parsing engine in 3.0.0. Adds methods for consuming HTML from a stream.</PackageReleaseNotes>
-        <TargetFrameworks>netstandard2.0;net5.0;net6.0</TargetFrameworks>
+        <TargetFrameworks>netstandard2.0;net6.0;net7.0</TargetFrameworks>
         <Version>3.1.1</Version>
         <AssemblyVersion>3.1.1</AssemblyVersion>
         <FileVersion>3.1.1</FileVersion>
@@ -29,8 +29,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="AngleSharp" Version="0.17.1" />
-      <PackageReference Include="AngleSharp.Css" Version="0.16.4" />
+      <PackageReference Include="AngleSharp" Version="1.0.1" />
+      <PackageReference Include="AngleSharp.Css" Version="0.17.0" />
       <PackageReference Include="AngleSharp.Js" Version="0.15.0" />
       <PackageReference Include="System.Memory" Version="4.5.5" />
     </ItemGroup>
