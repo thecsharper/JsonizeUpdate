@@ -3,7 +3,6 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using FluentAssertions;
-using Jsonize.Abstractions.Models;
 using Jsonize.Test.Fixtures;
 using Xunit;
 
