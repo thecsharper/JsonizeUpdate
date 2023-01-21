@@ -8,7 +8,6 @@ using AngleSharp;
 using AngleSharp.Dom;
 using AngleSharp.Html.Dom;
 using AngleSharp.Html.Parser;
-using AngleSharp.Io;
 using Jsonize.Abstractions.Configuration;
 using Jsonize.Abstractions.Interfaces;
 using Jsonize.Abstractions.Models;
@@ -125,7 +124,6 @@ namespace Jsonize.Parser
 
         private async Task GetChildNodesAsync(JsonizeNode parentNode, INode element)
         {
-            // No point trying to parse children that don't exist.
             if (!element.Descendents().Any())
             {
                 return;
@@ -133,6 +131,7 @@ namespace Jsonize.Parser
 
             var childNodes = new List<JsonizeNode>();
             
+            // TODO could be parallelize this?
             foreach (var childNode in element.ChildNodes)
             {
                 var childJsonizeNode = GetNodeValues(childNode);

@@ -1,4 +1,3 @@
-using Jsonize.Abstractions.Interfaces;
 using Jsonize.Parser;
 using Jsonize.Serializer.Json.Net;
 

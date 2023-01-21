@@ -12,7 +12,7 @@ namespace Jsonize.DependencyInjection
         public static IServiceCollection AddJsonizer(this IServiceCollection serviceCollection,
             IJsonizer jsonizer)
         {
-            serviceCollection.AddSingleton<IJsonizer>(sp => jsonizer);
+            serviceCollection.AddSingleton(sp => jsonizer);
 
             return serviceCollection;
         }
@@ -65,7 +65,7 @@ namespace Jsonize.DependencyInjection
         public static IServiceCollection AddJsonizer(this IServiceCollection serviceCollection,
             Func<IJsonizer> jsonizer)
         {
-            serviceCollection.AddSingleton<IJsonizer>(sp => jsonizer());
+            serviceCollection.AddSingleton(sp => jsonizer());
 
             return serviceCollection;
         }

@@ -10,7 +10,7 @@ namespace Jsonize.Test
 {
     public class JsonizeParserTests : IClassFixture<JsonizeParserTestFixture>
     {
-        private JsonizeParserTestFixture _testFixture;
+        private readonly JsonizeParserTestFixture _testFixture;
         
         public JsonizeParserTests(JsonizeParserTestFixture testFixture)
         {

@@ -34,6 +34,7 @@ namespace Jsonize.Test
         {
             var jsonize = await _fixture.Jsonizer.ParseToStringAsync(StringResources.LargeExample);
 
+            // TODO Bad test or not working?
             //Assert.Equal(StringResources.DocoHtmlExampleResult, jsonize);
             
             _testOutputHelper.WriteLine(jsonize);
@@ -56,17 +57,16 @@ namespace Jsonize.Test
             await using var stream = new MemoryStream(Encoding.UTF8.GetBytes(StringResources.LargeExample));
             var jsonize = await _fixture.Jsonizer.ParseToStringAsync(stream);
 
+            // TODO Bad test or not working?
             //Assert.Equal(StringResources.DocoHtmlExampleResult, jsonize);
-            
+
             _testOutputHelper.WriteLine(jsonize);
         }
 
         [Fact]
         public async Task TestOutput()
         {
-            const string html = StringResources.HtmlBodyP;
-
-            var output = await _fixture.Jsonizer.ParseToStringAsync(html);
+            var output = await _fixture.Jsonizer.ParseToStringAsync(StringResources.HtmlBodyP);
 
             Assert.Equal(StringResources.HtmlBodyPResult, output);
             

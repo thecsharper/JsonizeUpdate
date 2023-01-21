@@ -17,11 +17,9 @@ namespace Jsonize.Test
         [Fact]
         public async Task Serialize_DefaultSettings_SerializesCorrectly()
         {
-            string actual = await _testFixture.JsonizeSerializer.Serialize(JsonizeNodeTestResources.HtmlBodyP);
+            var actual = await _testFixture.JsonizeSerializer.Serialize(JsonizeNodeTestResources.HtmlBodyP);
 
-            actual
-                .Should()
-                .Be(StringResources.HtmlBodyPResult);
+            actual.Should().Be(StringResources.HtmlBodyPResult);
         }
     }
 }

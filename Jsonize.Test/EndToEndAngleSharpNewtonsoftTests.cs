@@ -1,7 +1,4 @@
-using System;
-using System.Net.Http;
 using System.Threading.Tasks;
-using Jsonize.Abstractions.Models;
 using Jsonize.Test.Fixtures;
 using Xunit;
 using Xunit.Abstractions;
@@ -32,9 +29,7 @@ namespace Jsonize.Test
         [Fact]
         public async Task TestOutput()
         {
-            const string html = StringResources.HtmlBodyP;
-
-            var output = await _fixture.Jsonizer.ParseToStringAsync(html);
+            var output = await _fixture.Jsonizer.ParseToStringAsync(StringResources.HtmlBodyP);
 
             Assert.Equal(StringResources.HtmlBodyPResult, output);
             

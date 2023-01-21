@@ -33,7 +33,7 @@ namespace Jsonize.Serializer.Json.Net
         
         public Task<string> Serialize(JsonizeNode jsonizeNode)
         {
-            string result = JsonConvert.SerializeObject(jsonizeNode, _jsonSerializerSettings);
+            var result = JsonConvert.SerializeObject(jsonizeNode, _jsonSerializerSettings);
 
             return Task.FromResult(result);
         }
