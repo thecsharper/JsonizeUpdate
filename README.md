@@ -1,32 +1,5 @@
-# Jsonize
-Convert HTML to JSON with this .NET package.
-
-## Version 1.0.9
-This version has been archived and is available to download from the release page.
-
-## Version 2.0.0
-This version was abandoned. See branch `jsonize-2.0.0` if you are interested.
-
-## Version 3.\*.\*
-Version 3.0.0 introduces breaking changes to the Jsonize project. 
-The project has been completely rewritten to decouple, simplify, and keep up with new standards.
-Version `3.*.*` will drop the `JackWFinlay` portion of the namespace, e.g. `JackWFinlay.Jsonize` is now `Jsonize`.
-
-The project now splits the parsing and serialization into separate areas of concern, 
-as noted by the introduction of the `IJsonizeParser` and `IJsonizeSerializer` interfaces,
-found in the `Jsonize.Abstractions` package.
-These can be implemented by anyone, 
-but a brand new parser has been written using AngleSharp as its HTML engine.
-This is supplied as the `Jsonize.Parser` package.
-There is available a serialization helper that conforms to the same standard as previous versions,
-using the `System.Text.Json` library.
-There is also the `Jsonize.Serializer.Json.Net` package,
-which implements a basic serializer wrapping the `Newtonsoft.Json` package with some useful functions.
-Feel free to implement your own serializer.
-
-The `Jsonize` package simply wraps the parser and serializer functions into one.
-Jsonize no longer will grab any content from the internet for you;
-you must supply the HTML as a `string` (or alternatively a `Stream` from 3.1.0) to `Jsonizer` class methods.
+# JsonizeUpdate
+Convert HTML to JSON with this .NET package. Update to Jsonize project.
 
 ### Version 3.1.0
 #### CancellationTokens
@@ -63,24 +36,24 @@ Get the NuGet packages:
 An example to get the site "https://jackfinlay.com" as a JSON string:
 
 ```C#
-private static async Task<string> Testy(string q = "")
+using Jsonize;
+using Jsonize.Parser;
+using Jsonize.Serializer;
+
+var url = @"https://jackfinlay.com";
+Console.WriteLine(await JsonizeTest(url));
+
+static async Task<string> JsonizeTest(string url)
 {
-    using (var client = new HttpClient())
-    {
-        string url = @"https://jackfinlay.com";
+    using var client = new HttpClient();
+    var response = await client.GetAsync(url);
 
-        HttpResponseMessage response = await client.GetAsync(url);
+    var html = await response.Content.ReadAsStringAsync();
+    var parser = new JsonizeParser();
+    var serializer = new JsonizeSerializer();
+    var jsonizer = new Jsonizer(parser, serializer);
 
-        string html = await response.Content.ReadAsStringAsync();
-
-        // The use of the parameterless constructors will use default settings.
-        JsonizeParser parser = new JsonizeParser();
-        JsonizeSerializer serializer = new JsonizeSerializer();        
-
-        Jsonizer jsonizer = new Jsonizer(parser, serializer);
-
-        return jsonizer.ParseToStringAsync();
-    }
+    return await jsonizer.ParseToStringAsync(html);
 }
 ```
 
@@ -130,130 +103,6 @@ Results are in the form:
             ]
 }
 ```
-
-## Example:
-
-The following HTML:
-``` HTML
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Jsonize</title>
-    </head>
-    <body>
-        <div id="parent" class="parent-div">
-            <div id="child1" class="child-div child1">Some Text</div>
-            <div id="child2" class="child-div child2">Some Text</div>
-            <div id="child3" class="child-div child3">Some Text</div>
-        </div>
-    </body>
-</html>
-```
-
-Becomes:
-``` JSON
-{
-    "nodeType": "Document",
-    "tag": null,
-    "text": null,
-    "attr": {},
-    "children": [
-        {
-            "nodeType": "DocumentType",
-            "tag": "html",
-            "text": null,
-            "attr": {},
-            "children": []
-        },
-        {
-            "nodeType": "Element",
-            "tag": "html",
-            "text": null,
-            "attr": {},
-            "children": [
-                {
-                    "nodeType": "Element",
-                    "tag": "head",
-                    "text": null,
-                    "attr": {},
-                    "children": [
-                        {
-                            "nodeType": "Element",
-                            "tag": "title",
-                            "text": "Jsonize",
-                            "attr": {},
-                            "children": []
-                        }
-                    ]
-                },
-                {
-                    "nodeType": "Element",
-                    "tag": "body",
-                    "text": null,
-                    "attr": {},
-                    "children": [
-                        {
-                            "nodeType": "Element",
-                            "tag": "div",
-                            "text": null,
-                            "attr": {
-                                "id": "parent",
-                                "class": [
-                                    "parent-div"
-                                ]
-                            },
-                            "children": [
-                                {
-                                    "nodeType": "Element",
-                                    "tag": "div",
-                                    "text": "Some Text",
-                                    "attr": {
-                                        "id": "child1",
-                                        "class": [
-                                            "child-div",
-                                            "child1"
-                                        ]
-                                    },
-                                    "children": []
-                                },
-                                {
-                                    "nodeType": "Element",
-                                    "tag": "div",
-                                    "text": "Some Text",
-                                    "attr": {
-                                        "id": "child2",
-                                        "class": [
-                                            "child-div",
-                                            "child2"
-                                        ]
-                                    },
-                                    "children": []
-                                },
-                                {
-                                    "nodeType": "Element",
-                                    "tag": "div",
-                                    "text": "Some Text",
-                                    "attr": {
-                                        "id": "child3",
-                                        "class": [
-                                            "child-div",
-                                            "child3"
-                                        ]
-                                    },
-                                    "children": []
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
-        }
-    ]
-}
-```
-
-## TODO:
-- Add Documentation.
 
 ## License
 MIT

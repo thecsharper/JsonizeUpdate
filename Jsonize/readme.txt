@@ -1,5 +1,11 @@
 -------
-Jsonize
+JsonizeUpdate
+-------
+
+Update and refactor of Jsonize by https://github.com/JackWFinlay/jsonize - goal to to simplify and add incremental improvements.
+
+-------
+Jsonize 
 -------
 
 Please visit the project site to see details of the latest updates:
