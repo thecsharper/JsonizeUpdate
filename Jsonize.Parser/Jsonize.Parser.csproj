@@ -65,7 +65,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="AngleSharp" Version="1.0.4" />
+      <PackageReference Include="AngleSharp" Version="1.0.6-alpha-321" />
       <PackageReference Include="AngleSharp.Css" Version="1.0.0-alpha-99" />
       <PackageReference Include="AngleSharp.Js" Version="0.15.0" />
       <PackageReference Include="System.Memory" Version="4.5.5" />
