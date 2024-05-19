@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jsonize.Benchmarks", "Jsoni
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jsonize.DependencyInjection", "Jsonize.DependencyInjection\Jsonize.DependencyInjection.csproj", "{9BDA6ABA-CDCD-4DCF-BB18-07BED089B0C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jsonize.Console", "Jsonize.Console\Jsonize.Console\Jsonize.Console.csproj", "{7C41FC3E-2CB8-404D-B4C6-95D88FD68925}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jsonize.Console", "Jsonize.Console\Jsonize.Console\Jsonize.Console.csproj", "{7C41FC3E-2CB8-404D-B4C6-95D88FD68925}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
